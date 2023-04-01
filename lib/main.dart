@@ -12,7 +12,7 @@ Future<void> main() async {
   );
 
   // run application
-  runApp(const MyApp()); 
+  runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
