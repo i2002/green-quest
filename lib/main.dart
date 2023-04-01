@@ -1,9 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:green_quest/pages/home.dart';
-import 'package:green_quest/pages/qr.dart';
-import 'package:green_quest/pages/profile.dart';
 import 'package:green_quest/screens/AppMain.dart';
 import 'package:green_quest/screens/LoginScreen.dart';
 import 'firebase_options.dart';
@@ -36,6 +33,10 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       ///debug banner off
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF1D9A6C))
+      ),
       home: StreamBuilder<User?>(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder:(context, snapshot) {

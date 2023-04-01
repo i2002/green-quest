@@ -5,8 +5,11 @@ class QR extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Center(
-      child: Image.asset('assets/images/QR_code.png'),
+      child: Image.asset(
+        'assets/images/QR_code.png',
+      ),
     );
   }
 }

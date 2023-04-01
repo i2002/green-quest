@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-
-import '../pages/home.dart';
-import '../pages/profile.dart';
-import '../pages/qr.dart';
+import 'package:green_quest/pages/home.dart';
+import 'package:green_quest/pages/qr.dart';
+import 'package:green_quest/pages/profile.dart';
+import 'package:green_quest/pages/discover.dart';
 
 class AppMain extends StatefulWidget {
   const AppMain({super.key});
@@ -34,6 +34,10 @@ class _AppMainState extends State<AppMain> {
             icon: Icon(Icons.home_outlined),
           ),
           NavigationDestination(
+            label: 'Discover',
+            icon: Icon(Icons.search),
+          ),
+          NavigationDestination(
             //!Good name for QR
             label: 'QR',
             icon: Icon(Icons.qr_code_rounded),
@@ -50,7 +54,7 @@ class _AppMainState extends State<AppMain> {
           });
         },
       ),
-      body: const [Home(), QR(), Profile()][currentIndex],
+      body: const [Home(), Discover(), QR(), Profile()][currentIndex],
     );
   }
 }
