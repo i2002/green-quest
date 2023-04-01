@@ -5,13 +5,21 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Container(
       height: double.infinity,
       width: double.infinity,
-      color: Colors.green,
-      child:Row(
-      children: const[ Text('Nature protector'), Icon(Icons.shield, color: Colors.brown,)]
-      )
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: const [
+          Text('Nature protector'),
+          Icon(
+            Icons.shield,
+            color: Colors.brown,
+          )
+        ],
+      ),
     );
   }
 }

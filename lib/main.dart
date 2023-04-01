@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:green_quest/pages/home.dart';
 import 'package:green_quest/pages/qr.dart';
 import 'package:green_quest/pages/profile.dart';
+import 'package:green_quest/pages/discover.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -33,6 +34,10 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       ///debug banner off
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+          useMaterial3: true,
+          colorScheme:
+              ColorScheme.fromSeed(seedColor: const Color(0xFF1D9A6C))),
       home: Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.greenAccent,
@@ -51,6 +56,10 @@ class _MyAppState extends State<MyApp> {
                 icon: Icon(Icons.home_outlined),
               ),
               NavigationDestination(
+                label: 'Discover',
+                icon: Icon(Icons.search),
+              ),
+              NavigationDestination(
                 //!Good name for QR
                 label: 'QR',
                 icon: Icon(Icons.qr_code_rounded),
@@ -67,7 +76,7 @@ class _MyAppState extends State<MyApp> {
               });
             },
           ),
-          body: const [Home(), QR(), Profile()][currentIndex]),
+          body: const [Home(), Discover(), QR(), Profile()][currentIndex]),
     );
   }
 }
