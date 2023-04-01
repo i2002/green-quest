@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:green_quest/pages/home.dart';
 import 'package:green_quest/pages/qr.dart';
 import 'package:green_quest/pages/profile.dart';
 import 'package:green_quest/pages/discover.dart';
+import 'package:flutter/material.dart';
 
 class AppMain extends StatefulWidget {
   const AppMain({super.key});

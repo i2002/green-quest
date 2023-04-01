@@ -11,7 +11,7 @@ class _DiscoverState extends State<Discover> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text('discover working'),
+      child: const Text('discover working'),
     );
   }
 }
