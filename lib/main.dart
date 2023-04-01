@@ -1,8 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:green_quest/pages/home.dart';
 import 'package:green_quest/pages/qr.dart';
 import 'package:green_quest/pages/profile.dart';
+import 'package:green_quest/screens/AppMain.dart';
+import 'package:green_quest/screens/LoginScreen.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -33,41 +36,16 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       ///debug banner off
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.greenAccent,
-            title: const Text(
-              'Green Quest',
-              style: TextStyle(color: Colors.black),
-            ),
-          ),
-          bottomNavigationBar: NavigationBar(
-            labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
-            animationDuration: const Duration(seconds: 1),
-            backgroundColor: Colors.greenAccent,
-            destinations: const [
-              NavigationDestination(
-                label: 'Home',
-                icon: Icon(Icons.home_outlined),
-              ),
-              NavigationDestination(
-                //!Good name for QR
-                label: 'QR',
-                icon: Icon(Icons.qr_code_rounded),
-              ),
-              NavigationDestination(
-                label: 'Profile',
-                icon: Icon(Icons.account_circle_outlined),
-              ),
-            ],
-            selectedIndex: currentIndex,
-            onDestinationSelected: (int index) {
-              setState(() {
-                currentIndex = index;
-              });
-            },
-          ),
-          body: const [Home(), QR(), Profile()][currentIndex]),
+      home: StreamBuilder<User?>(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder:(context, snapshot) {
+          if (snapshot.hasData) {
+            return AppMain();
+          } else {
+            return LoginScreen();
+          }
+        },
+      )
     );
   }
 }

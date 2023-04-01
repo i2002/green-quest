@@ -6,11 +6,11 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: double.infinity,
-      width: double.infinity,
-      color: Colors.green,
-      child:Row(
-      children: const[ Text('Nature protector'), Icon(Icons.shield, color: Colors.brown,)]
+        height: double.infinity,
+        width: double.infinity,
+        color: Colors.green,
+        child:Row(
+        children: const [Text('Nature protector'), Icon(Icons.shield, color: Colors.brown,)]
       )
     );
   }
