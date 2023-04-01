@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1051243532808",
+    "project_id": "green-quest-391e6",
+    "storage_bucket": "green-quest-391e6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1051243532808:android:a06eaeba17a8eb1d7437bd",
+        "android_client_info": {
+          "package_name": "com.example.green_quest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1051243532808-lf0n4c7o4k37k4l33rdih0qh7iorjhj0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBC65wlO4Ab3rzKVQQ39l3QAYk6DDPGEVA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1051243532808-lf0n4c7o4k37k4l33rdih0qh7iorjhj0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1051243532808-fdpvnivptvh6beffgfus0jjb4c4h4uc2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.greenQuest"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
