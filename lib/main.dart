@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:green_quest/screens/AppMain.dart';
 import 'package:green_quest/screens/LoginScreen.dart';
+import 'package:green_quest/screens/welcomeScreen.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -43,7 +44,7 @@ class _MyAppState extends State<MyApp> {
           if (snapshot.hasData) {
             return const AppMain();
           } else {
-            return const LoginScreen();
+            return const Welcome();
           }
         },
       )
