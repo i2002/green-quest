@@ -31,10 +31,31 @@ class Profile extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      'Email: ${user.email!}',
+                      'Email: ${user.email}',
                       textScaleFactor: 1.5,
-                      style: TextStyle(color: Colors.white),
-                    ),
+                      style: const TextStyle(color: Colors.white),
+                    )
+                  ],
+                ),
+                Row(
+                  children: [
+                    StreamBuilder(
+                      stream: FirebaseFirestore.instance
+                        .collection("/user-profiles")
+                        .doc(user.uid)
+                        .snapshots(),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState == ConnectionState.waiting) {
+                          return const Text("");
+                        }
+
+                        return Text(
+                          "XP: ${snapshot.data?["xp"]}", 
+                          textScaleFactor: 1.5,
+                          style: const TextStyle(color: Colors.white)
+                        );
+                      },
+                    )
                   ],
                 ),
                 Row(
