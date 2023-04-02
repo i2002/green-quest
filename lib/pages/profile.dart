@@ -15,40 +15,48 @@ class Profile extends StatelessWidget {
       final data = doc.data();
       print(data);
     });
-
-    return SizedBox(
-      height: double.infinity,
-      width: double.infinity,
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Text(
-                'Email: ${user.email!}',
-                textScaleFactor: 1.5,
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              const Text(
-                'Username: ',
-                textScaleFactor: 1.5,
-              ),
-              GetUserName()
-            ],
-          ),
-          Expanded(
-            child: Align(
-              alignment: FractionalOffset.bottomCenter,
-              child: ElevatedButton(
-                onPressed: () => FirebaseAuth.instance.signOut(),
-                child: const Text('Sign Out'),
-              ),
+    return Column(
+      children: [
+        Card(
+          color: Colors.green,
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  children: [
+                    const Text(
+                      'Username: ',
+                      textScaleFactor: 1.5,
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    GetUserName()
+                  ],
+                ),
+                Row(
+                  children: [
+                    Text(
+                      'Email: ${user.email!}',
+                      textScaleFactor: 1.5,
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () => FirebaseAuth.instance.signOut(),
+                      child: const Text('Sign Out'),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
