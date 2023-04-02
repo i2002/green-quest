@@ -22,7 +22,7 @@ class _DiscoverState extends State<Discover> {
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
       stream: FirebaseFirestore.instance
-          .collection("/guilds/TrFm0hrtDXiP9VwfYltu/quests")
+          .collection("/quests")
           .snapshots(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
@@ -74,40 +74,50 @@ class QuestScreen extends StatelessWidget {
     String formattedDate = DateFormat.yMMMMd().add_jm().format(quest.date);
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          quest.name,
-        ),
+        title: const Text("Quest details"),
         backgroundColor: Colors.greenAccent,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
               children: [
-                Text(
+                Flexible(child:
+                  Container(
+                    margin: const EdgeInsets.only(bottom: 10),
+                    child: Text(quest.name, style: Theme.of(context).textTheme.displaySmall)
+                  )
+                )
+            ]),
+            Row(
+              children: [
+                Flexible(child: Text(
                   quest.details,
                   textScaleFactor: 1.5,
-                ),
+                ))
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: 200,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    child: const Text('Take the Quest!'),
+            Expanded(child:
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  SizedBox(
+                    width: 200,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: const Text('Take the Quest!'),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text('Date: ${formattedDate}'),
+                Container(margin: const EdgeInsets.only(top: 10),child: Text('Date: $formattedDate'),),
               ],
             ),
           ],
