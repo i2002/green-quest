@@ -83,8 +83,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
       );
 
       // create user details
-      final user = <String, String> {
-        "name": nameController.text.trim()
+      final user = <String, dynamic> {
+        "name": nameController.text.trim(),
+        "xp": 0
       };
 
       await FirebaseFirestore.instance.collection("/user-profiles").doc(credentials.user!.uid).set(user);
