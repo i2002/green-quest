@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:green_quest/screens/LoginScreen.dart';
-import 'package:green_quest/screens/Register.dart';
+import 'package:green_quest/screens/RegisterScreen.dart';
 
 class Welcome extends StatelessWidget {
   const Welcome({super.key});
@@ -18,7 +18,7 @@ class Welcome extends StatelessWidget {
           end: Alignment.bottomRight,
         ),
       ),
-      padding: const EdgeInsets.only(top: 50, bottom: 50),
+      padding: const EdgeInsets.only(top: 75, bottom: 50),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -38,8 +38,8 @@ class Welcome extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: ElevatedButton(
-                          child: const Text('            Log In            '),
+                        child: SizedBox(width: 200, child: ElevatedButton(
+                          child: const Text('Log In'),
                           onPressed: () {
                             Navigator.push(
                               context,
@@ -48,7 +48,7 @@ class Welcome extends StatelessWidget {
                               ),
                             );
                           },
-                        ),
+                        )),
                       ),
                     ],
                   ),
@@ -56,17 +56,17 @@ class Welcome extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: ElevatedButton(
-                          child: const Text('            Sign In            '),
+                        child: SizedBox(width: 200, child: ElevatedButton(
+                          child: const Text('Sign Up'),
                           onPressed: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const Register(),
+                                builder: (context) => const RegisterScreen(),
                               ),
                             );
                           },
-                        ),
+                        )),
                       ),
                     ],
                   ),
