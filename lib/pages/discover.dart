@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:green_quest/utilities/quest_listing.dart';
 import 'package:intl/intl.dart';
 
 class Quest {
@@ -22,56 +23,20 @@ class Discover extends StatefulWidget {
 class _DiscoverState extends State<Discover> {
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<QuerySnapshot>(
+    return Column(children: [StreamBuilder<List<Quest>>(
       stream: FirebaseFirestore.instance
           .collection("/quests")
           .orderBy("date")
           .where("date", isGreaterThanOrEqualTo: Timestamp.fromDate(DateTime.now()))
-          .snapshots(),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const CircularProgressIndicator();
-        }
-
-        final quests = snapshot.data?.docs;
-
-        if (quests!.isEmpty) {
-          return const Text("No data.");
-        }
-
-        return ListView.builder(
-          itemCount: quests.length,
-          itemBuilder: (context, index) {
-            var questData = quests[index];
-            Quest q = Quest(
-              questData.id, 
-              questData["name"], 
-              questData["details"],
-              questData["date"].toDate()
-            );
-
-            String formattedDate = DateFormat.yMMMMd()
-                .add_jm()
-                .format(questData["date"].toDate());
-
-            return Card(
-              child: ListTile(
-                title: Text(questData["name"]),
-                subtitle: Text("Date: $formattedDate"),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => QuestScreen(quest: q),
-                    ),
-                  );
-                },
-              ),
-            );
-          },
-        );
-      },
-    );
+          .snapshots()
+          .map((event) => event.docs.map((questDoc) => Quest(
+            questDoc.id,
+            questDoc["name"],
+            questDoc["details"],
+            questDoc["date"].toDate()
+          )).toList()),
+      builder: questListing
+    )]);
   }
 }
 
