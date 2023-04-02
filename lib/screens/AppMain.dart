@@ -1,4 +1,5 @@
 import 'package:green_quest/pages/home.dart';
+import 'package:green_quest/pages/leaderboard.dart';
 import 'package:green_quest/pages/qr.dart';
 import 'package:green_quest/pages/profile.dart';
 import 'package:green_quest/pages/discover.dart';
@@ -43,6 +44,10 @@ class _AppMainState extends State<AppMain> {
             icon: Icon(Icons.qr_code_rounded),
           ),
           NavigationDestination(
+            label: 'LeaderBoard',
+            icon: Icon(Icons.leaderboard_outlined),
+          ),
+          NavigationDestination(
             label: 'Profile',
             icon: Icon(Icons.account_circle_outlined),
           ),
@@ -54,7 +59,13 @@ class _AppMainState extends State<AppMain> {
           });
         },
       ),
-      body: const [Home(), Discover(), QR(), Profile()][currentIndex],
+      body: const [
+        Home(),
+        Discover(),
+        QR(),
+        Leaderboard(),
+        Profile()
+      ][currentIndex],
     );
   }
 }

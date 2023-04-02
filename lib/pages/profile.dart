@@ -9,12 +9,6 @@ class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser!;
-    final db = FirebaseFirestore.instance;
-    final docRef = db.collection('user-profiles').doc(user.uid);
-    docRef.get().then((DocumentSnapshot doc) {
-      final data = doc.data();
-      print(data);
-    });
     return Column(
       children: [
         Card(
