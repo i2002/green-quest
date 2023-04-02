@@ -34,12 +34,33 @@ class Home extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    const Text(
-                      'Rank: ',
-                      textScaleFactor: 1.5,
-                      style: TextStyle(color: Colors.white),
+                    StreamBuilder(
+                      stream: FirebaseFirestore.instance
+                        .collection("/user-profiles")
+                        .doc(user.uid)
+                        .snapshots(),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState == ConnectionState.waiting) {
+                          return const Text("");
+                        }
+
+                        int xp = snapshot.data?["xp"];
+                        String rank = "Unranked";
+                        if (xp > 25) {
+                          rank = "Silver";
+                        }
+
+                        if (xp > 50) {
+                          rank = "Gold";
+                        }
+
+                        return Text(
+                          "Rank: $rank", 
+                          textScaleFactor: 1.5,
+                          style: const TextStyle(color: Colors.white)
+                        );
+                      },
                     ),
-                    GetUserName(),
                   ],
                 ),
               ],
